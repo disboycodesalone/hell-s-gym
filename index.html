@@ -25,735 +25,188 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: var(--font-body);
-    font-size: 16px;
-    overflow-x: hidden;
-  }
-
-  /* ─── SCROLLBAR ─── */
+  body { background: var(--black); color: var(--white); font-family: var(--font-body); font-size: 16px; overflow-x: hidden; }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--black); }
   ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
 
-  /* ─── TOP BAR ─── */
-  .topbar {
-    background: var(--red-dark);
-    text-align: center;
-    padding: 8px 20px;
-    font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #FFD0D5;
-  }
+  .topbar { background: var(--red-dark); text-align: center; padding: 8px 20px; font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: #FFD0D5; }
 
-  /* ─── NAVBAR ─── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(10,10,10,0.97);
-    border-bottom: 2px solid var(--red-dark);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    height: 70px;
-    backdrop-filter: blur(10px);
-  }
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-  }
-  .logo-icon {
-    width: 48px;
-    height: 48px;
-    background: var(--red);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 26px;
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
-  }
-  .logo-icon::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--orange);
-  }
-  .logo-text {
-    font-family: var(--font-display);
-    font-size: 28px;
-    color: var(--white);
-    letter-spacing: 2px;
-    line-height: 1;
-  }
+  nav { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.97); border-bottom: 2px solid var(--red-dark); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; backdrop-filter: blur(10px); }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-icon { width: 48px; height: 48px; background: var(--red); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 26px; color: var(--white); position: relative; overflow: hidden; }
+  .logo-icon::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--orange); }
+  .logo-text { font-family: var(--font-display); font-size: 28px; color: var(--white); letter-spacing: 2px; line-height: 1; }
   .logo-text span { color: var(--red); }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--gray-text);
-    text-decoration: none;
-    font-family: var(--font-heading);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 8px 14px;
-    border-radius: 3px;
-    transition: all 0.2s;
-    position: relative;
-  }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+  .nav-links a { color: var(--gray-text); text-decoration: none; font-family: var(--font-heading); font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 14px; border-radius: 3px; transition: all 0.2s; }
   .nav-links a:hover { color: var(--white); background: rgba(192,21,42,0.15); }
   .nav-links a.dropdown-toggle::after { content: ' ▾'; font-size: 10px; }
   .dropdown { position: relative; }
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    background: var(--gray-dark);
-    border: 1px solid var(--gray-mid);
-    border-top: 2px solid var(--red);
-    min-width: 180px;
-    border-radius: 4px;
-    overflow: hidden;
-    z-index: 100;
-  }
+  .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: var(--gray-dark); border: 1px solid var(--gray-mid); border-top: 2px solid var(--red); min-width: 180px; border-radius: 4px; overflow: hidden; z-index: 100; }
   .dropdown:hover .dropdown-menu { display: block; }
-  .dropdown-menu a {
-    display: block;
-    padding: 10px 16px;
-    border-radius: 0;
-    border-bottom: 1px solid var(--gray-mid);
-    font-size: 12px;
-  }
+  .dropdown-menu a { display: block; padding: 10px 16px; border-radius: 0; border-bottom: 1px solid var(--gray-mid); font-size: 12px; }
   .dropdown-menu a:last-child { border-bottom: none; }
-  .btn-trial {
-    background: var(--red);
-    color: var(--white) !important;
-    padding: 10px 22px !important;
-    border-radius: 3px !important;
-    font-weight: 600 !important;
-    font-size: 13px !important;
-    letter-spacing: 2px !important;
-    transition: background 0.2s !important;
-    border: 2px solid var(--red) !important;
-  }
+  .btn-trial { background: var(--red); color: var(--white) !important; padding: 10px 22px !important; border-radius: 3px !important; font-weight: 600 !important; font-size: 13px !important; letter-spacing: 2px !important; transition: background 0.2s !important; border: 2px solid var(--red) !important; }
   .btn-trial:hover { background: var(--red-dark) !important; }
   .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
   .hamburger span { width: 26px; height: 2px; background: var(--white); border-radius: 2px; }
 
-  /* ─── HERO ─── */
-  #home {
-    position: relative;
-    min-height: 92vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: var(--black);
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(192,21,42,0.18) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(232,98,26,0.10) 0%, transparent 60%),
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 40px,
-        rgba(255,255,255,0.012) 40px,
-        rgba(255,255,255,0.012) 41px
-      );
-  }
-  .hero-flame {
-    position: absolute;
-    right: 0; top: 0; bottom: 0;
-    width: 55%;
-    background: linear-gradient(135deg, rgba(10,10,10,1) 0%, transparent 40%);
-    z-index: 1;
-  }
-  .hero-image-placeholder {
-    position: absolute;
-    right: 0; top: 0; bottom: 0;
-    width: 55%;
-    background: linear-gradient(160deg, var(--gray-dark) 0%, #1a0a0a 50%, #200000 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  /* TO ADD YOUR HERO IMAGE: replace the div.hero-image-placeholder contents with:
-     <img src="YOUR_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.7;"/> */
-  .hero-image-placeholder .placeholder-text {
-    font-family: var(--font-display);
-    font-size: 22px;
-    color: var(--gray-light);
-    letter-spacing: 3px;
-    text-align: center;
-    line-height: 1.6;
-  }
-  .hero-image-placeholder .placeholder-text small { font-size: 12px; font-family: var(--font-body); display: block; margin-top: 8px; color: var(--gray-light); letter-spacing: 2px; }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 80px;
-    max-width: 620px;
-  }
-  .hero-badge {
-    display: inline-block;
-    background: var(--red-dark);
-    color: var(--orange-light);
-    font-family: var(--font-heading);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 2px;
-    margin-bottom: 24px;
-    border-left: 3px solid var(--orange);
-  }
-  .hero-title {
-    font-family: var(--font-display);
-    font-size: clamp(72px, 8vw, 120px);
-    line-height: 0.92;
-    letter-spacing: 2px;
-    margin-bottom: 24px;
-  }
+  /* HERO */
+  #home { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; background: var(--black); }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(192,21,42,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(232,98,26,0.10) 0%, transparent 60%), repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px); }
+  .hero-flame { position: absolute; right: 0; top: 0; bottom: 0; width: 55%; background: linear-gradient(135deg, rgba(10,10,10,1) 0%, transparent 40%); z-index: 1; }
+  .hero-image-wrap { position: absolute; right: 0; top: 0; bottom: 0; width: 55%; overflow: hidden; }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: grayscale(20%) contrast(1.15); }
+  .hero-image-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(192,21,42,0.25) 0%, rgba(10,10,10,0.2) 100%); }
+  .hero-content { position: relative; z-index: 2; padding: 0 80px; max-width: 620px; }
+  .hero-badge { display: inline-block; background: var(--red-dark); color: var(--orange-light); font-family: var(--font-heading); font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; border-radius: 2px; margin-bottom: 24px; border-left: 3px solid var(--orange); }
+  .hero-title { font-family: var(--font-display); font-size: clamp(72px, 8vw, 120px); line-height: 0.92; letter-spacing: 2px; margin-bottom: 24px; }
   .hero-title .line1 { display: block; color: var(--white); }
   .hero-title .line2 { display: block; color: var(--red); }
   .hero-title .line3 { display: block; color: var(--orange); font-size: 0.6em; letter-spacing: 8px; }
-  .hero-sub {
-    font-family: var(--font-body);
-    font-size: 17px;
-    color: var(--gray-text);
-    line-height: 1.7;
-    margin-bottom: 40px;
-    font-weight: 400;
-  }
+  .hero-sub { font-family: var(--font-body); font-size: 17px; color: var(--gray-text); line-height: 1.7; margin-bottom: 40px; font-weight: 400; }
   .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-  .cta-primary {
-    background: var(--red);
-    color: var(--white);
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 16px 36px;
-    border-radius: 3px;
-    text-decoration: none;
-    border: 2px solid var(--red);
-    transition: all 0.25s;
-    display: inline-block;
-  }
+  .cta-primary { background: var(--red); color: var(--white); font-family: var(--font-heading); font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 16px 36px; border-radius: 3px; text-decoration: none; border: 2px solid var(--red); transition: all 0.25s; display: inline-block; cursor: pointer; }
   .cta-primary:hover { background: transparent; color: var(--red); }
-  .cta-secondary {
-    background: transparent;
-    color: var(--white);
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 16px 36px;
-    border-radius: 3px;
-    text-decoration: none;
-    border: 2px solid var(--gray-light);
-    transition: all 0.25s;
-    display: inline-block;
-  }
+  .cta-secondary { background: transparent; color: var(--white); font-family: var(--font-heading); font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 16px 36px; border-radius: 3px; text-decoration: none; border: 2px solid var(--gray-light); transition: all 0.25s; display: inline-block; }
   .cta-secondary:hover { border-color: var(--orange); color: var(--orange); }
-  .hero-stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 60px;
-  }
+  .hero-stats { display: flex; gap: 40px; margin-top: 60px; }
   .stat { text-align: left; }
   .stat-num { font-family: var(--font-display); font-size: 42px; color: var(--red); line-height: 1; }
   .stat-label { font-family: var(--font-body); font-size: 12px; color: var(--gray-text); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
 
-  /* ─── SECTION BASE ─── */
   section { padding: 90px 80px; }
-  .section-label {
-    font-family: var(--font-heading);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 12px;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(44px, 5vw, 70px);
-    line-height: 0.95;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-  }
-  .section-sub {
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--gray-text);
-    max-width: 520px;
-    line-height: 1.7;
-    margin-bottom: 50px;
-  }
-  .divider {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--red), var(--orange));
-    margin-bottom: 20px;
-    border-radius: 2px;
-  }
+  .section-label { font-family: var(--font-heading); font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(44px, 5vw, 70px); line-height: 0.95; letter-spacing: 1px; margin-bottom: 20px; }
+  .section-sub { font-family: var(--font-body); font-size: 16px; color: var(--gray-text); max-width: 520px; line-height: 1.7; margin-bottom: 50px; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--red), var(--orange)); margin-bottom: 20px; border-radius: 2px; }
 
-  /* ─── ABOUT ─── */
+  /* ABOUT */
   #about { background: var(--black-mid); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
-  .about-image-wrap {
-    position: relative;
-    aspect-ratio: 4/5;
-    border-radius: 4px;
-    overflow: hidden;
-    background: var(--gray-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  /* REPLACE IMAGE: <img src="YOUR_ABOUT_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/> */
-  .about-image-wrap .img-placeholder {
-    font-family: var(--font-display);
-    font-size: 18px;
-    color: var(--gray-light);
-    letter-spacing: 2px;
-    text-align: center;
-    line-height: 1.8;
-  }
-  .about-image-wrap .img-placeholder small { display: block; font-size: 11px; font-family: var(--font-body); margin-top: 6px; }
-  .about-image-wrap::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 40%;
-    background: linear-gradient(to top, var(--black-mid), transparent);
-  }
-  .about-accent {
-    position: absolute;
-    top: -10px; right: -10px;
-    width: 80px; height: 80px;
-    border-top: 4px solid var(--red);
-    border-right: 4px solid var(--red);
-    border-radius: 2px;
-  }
-  .about-accent-bl {
-    position: absolute;
-    bottom: -10px; left: -10px;
-    width: 80px; height: 80px;
-    border-bottom: 4px solid var(--orange);
-    border-left: 4px solid var(--orange);
-    border-radius: 2px;
-  }
+  .about-image-wrap { position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: var(--gray-dark); }
+  .about-image-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(25%) contrast(1.1); }
+  .about-image-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(192,21,42,0.15) 0%, rgba(10,10,10,0.5) 100%); pointer-events: none; }
+  .about-accent { position: absolute; top: -10px; right: -10px; width: 80px; height: 80px; border-top: 4px solid var(--red); border-right: 4px solid var(--red); border-radius: 2px; }
+  .about-accent-bl { position: absolute; bottom: -10px; left: -10px; width: 80px; height: 80px; border-bottom: 4px solid var(--orange); border-left: 4px solid var(--orange); border-radius: 2px; }
   .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
-  .about-feature {
-    background: var(--gray-dark);
-    border: 1px solid var(--gray-mid);
-    border-left: 3px solid var(--red);
-    padding: 14px 18px;
-    border-radius: 3px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--white);
-  }
+  .about-feature { background: var(--gray-dark); border: 1px solid var(--gray-mid); border-left: 3px solid var(--red); padding: 14px 18px; border-radius: 3px; font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--white); }
 
-  /* ─── EQUIPMENT ─── */
+  /* EQUIPMENT */
   #equipment { background: var(--black); }
-  .eq-tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-  }
-  .eq-tab {
-    font-family: var(--font-heading);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    border: 1px solid var(--gray-mid);
-    background: transparent;
-    color: var(--gray-text);
-    cursor: pointer;
-    border-radius: 3px;
-    transition: all 0.2s;
-  }
+  .eq-tabs { display: flex; gap: 4px; margin-bottom: 40px; flex-wrap: wrap; }
+  .eq-tab { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 10px 20px; border: 1px solid var(--gray-mid); background: transparent; color: var(--gray-text); cursor: pointer; border-radius: 3px; transition: all 0.2s; }
   .eq-tab:hover, .eq-tab.active { background: var(--red); color: var(--white); border-color: var(--red); }
   .eq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-  .eq-card {
-    background: var(--gray-dark);
-    border: 1px solid var(--gray-mid);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: transform 0.25s, border-color 0.25s;
-    cursor: pointer;
-  }
+  .eq-card { background: var(--gray-dark); border: 1px solid var(--gray-mid); border-radius: 4px; overflow: hidden; transition: transform 0.25s, border-color 0.25s; cursor: pointer; }
   .eq-card:hover { transform: translateY(-4px); border-color: var(--red); }
-  .eq-card-image {
-    aspect-ratio: 4/3;
-    background: var(--black-mid);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 14px;
-    color: var(--gray-light);
-    letter-spacing: 2px;
-    text-align: center;
-    line-height: 1.8;
-    position: relative;
-    overflow: hidden;
-  }
-  /* REPLACE EACH MACHINE IMAGE:
-     <img src="YOUR_MACHINE_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/>
-     Replace the placeholder div inside each .eq-card-image */
-  .eq-card-image small { display: block; font-size: 10px; font-family: var(--font-body); margin-top: 4px; }
+  .eq-card-image { aspect-ratio: 4/3; position: relative; overflow: hidden; }
+  .eq-card-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%) contrast(1.1); transition: transform 0.3s; display: block; }
+  .eq-card:hover .eq-card-image img { transform: scale(1.05); }
+  .eq-card-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(192,21,42,0.2) 0%, rgba(10,10,10,0.45) 100%); pointer-events: none; }
   .eq-card-info { padding: 16px; }
   .eq-card-name { font-family: var(--font-heading); font-size: 15px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
   .eq-card-cat { font-family: var(--font-body); font-size: 12px; color: var(--orange); letter-spacing: 1px; text-transform: uppercase; }
 
-  /* ─── TRAINERS ─── */
+  /* TRAINERS */
   #trainers { background: var(--black-mid); }
   .trainers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; }
-  .trainer-card {
-    background: var(--gray-dark);
-    border: 1px solid var(--gray-mid);
-    border-radius: 6px;
-    overflow: hidden;
-    transition: transform 0.25s;
-  }
+  .trainer-card { background: var(--gray-dark); border: 1px solid var(--gray-mid); border-radius: 6px; overflow: hidden; transition: transform 0.25s; }
   .trainer-card:hover { transform: translateY(-6px); }
-  .trainer-image {
-    aspect-ratio: 3/4;
-    background: var(--black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 15px;
-    color: var(--gray-light);
-    letter-spacing: 2px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  /* REPLACE TRAINER IMAGE:
-     <img src="YOUR_TRAINER_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/>
-     Replace the placeholder div inside each .trainer-image */
-  .trainer-image small { display: block; font-size: 10px; font-family: var(--font-body); margin-top: 4px; }
-  .trainer-overlay {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 16px;
-    background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 100%);
-  }
+  .trainer-image { aspect-ratio: 3/4; position: relative; overflow: hidden; background: var(--black); }
+  .trainer-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(25%) contrast(1.1); transition: transform 0.4s; display: block; }
+  .trainer-card:hover .trainer-image img { transform: scale(1.04); }
+  .trainer-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(192,21,42,0.18) 0%, rgba(10,10,10,0.55) 100%); pointer-events: none; }
+  .trainer-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 100%); z-index: 1; }
   .trainer-info { padding: 18px; }
   .trainer-name { font-family: var(--font-heading); font-size: 18px; font-weight: 700; text-transform: uppercase; color: var(--white); }
-  .trainer-type {
-    font-family: var(--font-body);
-    font-size: 12px;
-    color: var(--orange);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin: 4px 0 10px;
-  }
+  .trainer-type { font-family: var(--font-body); font-size: 12px; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; margin: 4px 0 10px; }
   .trainer-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .trainer-tag {
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--gray-text);
-    background: var(--gray-mid);
-    padding: 4px 10px;
-    border-radius: 2px;
-    border: 1px solid var(--gray-light);
-  }
+  .trainer-tag { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gray-text); background: var(--gray-mid); padding: 4px 10px; border-radius: 2px; border: 1px solid var(--gray-light); }
 
-  /* ─── BILLING ─── */
+  /* BILLING */
   #billing { background: var(--black); }
   .billing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .billing-card {
-    background: var(--gray-dark);
-    border: 1px solid var(--gray-mid);
-    border-radius: 6px;
-    padding: 36px 30px;
-    position: relative;
-    transition: transform 0.25s;
-  }
+  .billing-card { background: var(--gray-dark); border: 1px solid var(--gray-mid); border-radius: 6px; padding: 36px 30px; position: relative; transition: transform 0.25s; }
   .billing-card:hover { transform: translateY(-4px); }
-  .billing-card.featured {
-    border-color: var(--red);
-    background: linear-gradient(160deg, #200008 0%, var(--gray-dark) 60%);
-  }
-  .billing-badge {
-    position: absolute;
-    top: -12px; left: 50%;
-    transform: translateX(-50%);
-    background: var(--red);
-    color: var(--white);
-    font-family: var(--font-heading);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 5px 16px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
+  .billing-card.featured { border-color: var(--red); background: linear-gradient(160deg, #200008 0%, var(--gray-dark) 60%); }
+  .billing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--red); color: var(--white); font-family: var(--font-heading); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 5px 16px; border-radius: 20px; white-space: nowrap; }
   .billing-plan { font-family: var(--font-heading); font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gray-text); margin-bottom: 12px; }
   .billing-price { font-family: var(--font-display); font-size: 60px; color: var(--white); line-height: 1; }
   .billing-price sup { font-size: 24px; vertical-align: top; margin-top: 12px; }
   .billing-price sub { font-size: 16px; color: var(--gray-text); font-family: var(--font-body); }
   .billing-divider { width: 40px; height: 2px; background: var(--red); margin: 20px 0; border-radius: 2px; }
   .billing-features { list-style: none; margin-bottom: 30px; }
-  .billing-features li {
-    font-family: var(--font-body);
-    font-size: 15px;
-    color: var(--gray-text);
-    padding: 8px 0;
-    border-bottom: 1px solid var(--gray-mid);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .billing-features li { font-family: var(--font-body); font-size: 15px; color: var(--gray-text); padding: 8px 0; border-bottom: 1px solid var(--gray-mid); display: flex; align-items: center; gap: 10px; }
   .billing-features li::before { content: '✦'; color: var(--orange); font-size: 10px; flex-shrink: 0; }
   .billing-features li.included { color: var(--white); }
-  .billing-btn {
-    display: block;
-    text-align: center;
-    padding: 14px;
-    border-radius: 3px;
-    font-family: var(--font-heading);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 2px solid var(--red);
-    color: var(--white);
-    transition: all 0.2s;
-  }
+  .billing-btn { display: block; text-align: center; padding: 14px; border-radius: 3px; font-family: var(--font-heading); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 2px solid var(--red); color: var(--white); transition: all 0.2s; cursor: pointer; background: transparent; width: 100%; }
   .billing-btn:hover, .billing-card.featured .billing-btn { background: var(--red); }
   .billing-card.featured .billing-btn:hover { background: var(--red-dark); }
 
-  /* ─── GALLERY ─── */
+  /* GALLERY */
   #gallery { background: var(--black-mid); }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-    gap: 10px;
-  }
-  .gallery-item {
-    background: var(--gray-dark);
-    border-radius: 4px;
-    overflow: hidden;
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 13px;
-    color: var(--gray-light);
-    letter-spacing: 2px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.25s;
-    position: relative;
-  }
-  .gallery-item:hover { opacity: 0.8; transform: scale(1.02); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .gallery-item { border-radius: 4px; overflow: hidden; cursor: pointer; transition: all 0.25s; position: relative; aspect-ratio: 1; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(25%) contrast(1.1); transition: transform 0.35s; }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(192,21,42,0.2) 0%, rgba(10,10,10,0.35) 100%); pointer-events: none; }
   .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
   .gallery-item.tall { grid-row: span 2; aspect-ratio: 1/2; }
-  /* REPLACE GALLERY IMAGES:
-     Inside each .gallery-item div, add:
-     <img src="YOUR_GALLERY_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/>
-     Remove the placeholder text */
-  .gallery-item small { display: block; font-size: 10px; font-family: var(--font-body); margin-top: 4px; }
-  .gallery-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(192,21,42,0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s;
-  }
+  .gallery-overlay { position: absolute; inset: 0; background: rgba(192,21,42,0); display: flex; align-items: center; justify-content: center; transition: background 0.3s; z-index: 1; }
   .gallery-item:hover .gallery-overlay { background: rgba(192,21,42,0.3); }
   .gallery-overlay-icon { font-size: 32px; color: white; opacity: 0; transition: opacity 0.3s; }
   .gallery-item:hover .gallery-overlay-icon { opacity: 1; }
 
-  /* ─── PROGRAMS ─── */
+  /* PROGRAMS */
   #programs { background: var(--black); }
   .programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .program-card {
-    background: var(--gray-dark);
-    border: 1px solid var(--gray-mid);
-    border-top: 3px solid var(--red);
-    border-radius: 4px;
-    padding: 30px 24px;
-    transition: transform 0.25s, border-top-color 0.25s;
-  }
+  .program-card { background: var(--gray-dark); border: 1px solid var(--gray-mid); border-top: 3px solid var(--red); border-radius: 4px; padding: 30px 24px; transition: transform 0.25s, border-top-color 0.25s; }
   .program-card:hover { transform: translateY(-4px); border-top-color: var(--orange); }
   .program-icon { font-size: 36px; margin-bottom: 16px; }
   .program-name { font-family: var(--font-heading); font-size: 20px; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 10px; }
   .program-desc { font-family: var(--font-body); font-size: 15px; color: var(--gray-text); line-height: 1.6; }
 
-  /* ─── CONTACT ─── */
+  /* CONTACT */
   #contact { background: var(--black-mid); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-  .contact-info-item {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 24px;
-    align-items: flex-start;
-  }
-  .contact-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--red-dark);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
+  .contact-info-item { display: flex; gap: 14px; margin-bottom: 24px; align-items: flex-start; }
+  .contact-icon { width: 40px; height: 40px; background: var(--red-dark); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
   .contact-info-label { font-family: var(--font-heading); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 4px; }
   .contact-info-value { font-family: var(--font-body); font-size: 15px; color: var(--gray-text); }
   .contact-form { display: flex; flex-direction: column; gap: 14px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .form-input, .form-textarea {
-    background: var(--gray-dark);
-    border: 1px solid var(--gray-mid);
-    border-radius: 3px;
-    padding: 14px 16px;
-    color: var(--white);
-    font-family: var(--font-body);
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-  }
-  .form-input:focus, .form-textarea:focus { border-color: var(--red); }
+  .form-input, .form-textarea, .form-select { background: var(--gray-dark); border: 1px solid var(--gray-mid); border-radius: 3px; padding: 14px 16px; color: var(--white); font-family: var(--font-body); font-size: 15px; outline: none; transition: border-color 0.2s; width: 100%; }
+  .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--red); }
   .form-input::placeholder, .form-textarea::placeholder { color: var(--gray-light); }
+  .form-select option { background: var(--gray-dark); color: var(--white); }
   .form-textarea { resize: vertical; min-height: 120px; }
-  .form-btn {
-    background: var(--red);
-    color: var(--white);
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 16px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+  .form-btn { background: var(--red); color: var(--white); font-family: var(--font-heading); font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 16px; border: none; border-radius: 3px; cursor: pointer; transition: background 0.2s; }
   .form-btn:hover { background: var(--red-dark); }
 
-  /* ─── FREE TRIAL SECTION ─── */
-  #free-trial {
-    background: linear-gradient(135deg, #1a0005 0%, var(--black) 50%, #1a0800 100%);
-    border-top: 2px solid var(--red-dark);
-    border-bottom: 2px solid var(--red-dark);
-    text-align: center;
-    padding: 80px;
-  }
+  /* PLAN BADGE in contact form */
+  .plan-notice { background: rgba(192,21,42,0.12); border: 1px solid var(--red-dark); border-left: 3px solid var(--red); border-radius: 3px; padding: 10px 14px; font-family: var(--font-body); font-size: 13px; color: var(--orange-light); letter-spacing: 1px; display: none; }
+  .plan-notice.visible { display: block; }
+
+  /* FREE TRIAL */
+  #free-trial { background: linear-gradient(135deg, #1a0005 0%, var(--black) 50%, #1a0800 100%); border-top: 2px solid var(--red-dark); border-bottom: 2px solid var(--red-dark); text-align: center; padding: 80px; }
   #free-trial .section-title { font-size: clamp(50px, 6vw, 90px); }
   #free-trial .section-sub { margin: 0 auto 40px; text-align: center; max-width: 500px; }
-  .trial-form {
-    display: flex;
-    gap: 12px;
-    max-width: 500px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .trial-form input {
-    flex: 1;
-    min-width: 200px;
-    background: var(--gray-dark);
-    border: 1px solid var(--gray-mid);
-    border-radius: 3px;
-    padding: 16px 20px;
-    color: var(--white);
-    font-family: var(--font-body);
-    font-size: 15px;
-    outline: none;
-  }
+  .trial-form { display: flex; gap: 12px; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+  .trial-form input { flex: 1; min-width: 200px; background: var(--gray-dark); border: 1px solid var(--gray-mid); border-radius: 3px; padding: 16px 20px; color: var(--white); font-family: var(--font-body); font-size: 15px; outline: none; }
   .trial-form input:focus { border-color: var(--red); }
   .trial-form input::placeholder { color: var(--gray-light); }
-  .trial-form button {
-    background: var(--red);
-    color: var(--white);
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 16px 32px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+  .trial-form button { background: var(--red); color: var(--white); font-family: var(--font-heading); font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: none; border-radius: 3px; cursor: pointer; transition: background 0.2s; }
   .trial-form button:hover { background: var(--red-dark); }
 
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--black);
-    border-top: 1px solid var(--gray-mid);
-    padding: 60px 80px 30px;
-  }
+  footer { background: var(--black); border-top: 1px solid var(--gray-mid); padding: 60px 80px 30px; }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-  .footer-brand { }
   .footer-logo { font-family: var(--font-display); font-size: 36px; letter-spacing: 2px; margin-bottom: 12px; }
   .footer-logo span { color: var(--red); }
   .footer-tagline { font-family: var(--font-body); font-size: 14px; color: var(--gray-text); line-height: 1.6; margin-bottom: 20px; }
   .footer-socials { display: flex; gap: 10px; }
-  .social-btn {
-    width: 38px; height: 38px;
-    border: 1px solid var(--gray-mid);
-    border-radius: 3px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-    text-decoration: none;
-    color: var(--gray-text);
-    transition: all 0.2s;
-  }
+  .social-btn { width: 38px; height: 38px; border: 1px solid var(--gray-mid); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none; color: var(--gray-text); transition: all 0.2s; }
   .social-btn:hover { background: var(--red); border-color: var(--red); color: var(--white); }
   .footer-col h4 { font-family: var(--font-heading); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: 16px; }
   .footer-col ul { list-style: none; }
@@ -764,67 +217,21 @@
   .footer-copy { font-family: var(--font-body); font-size: 13px; color: var(--gray-text); }
   .footer-copy span { color: var(--red); }
 
-  /* ─── MODAL (Lightbox) ─── */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
   .modal-overlay.open { display: flex; }
-  .modal-box {
-    background: var(--gray-dark);
-    border: 1px solid var(--gray-mid);
-    border-top: 3px solid var(--red);
-    border-radius: 6px;
-    padding: 40px;
-    max-width: 480px;
-    width: 90%;
-    position: relative;
-  }
-  .modal-close {
-    position: absolute;
-    top: 14px; right: 18px;
-    font-size: 22px;
-    cursor: pointer;
-    color: var(--gray-text);
-    transition: color 0.2s;
-    background: none; border: none;
-    font-family: var(--font-display);
-  }
+  .modal-box { background: var(--gray-dark); border: 1px solid var(--gray-mid); border-top: 3px solid var(--red); border-radius: 6px; padding: 40px; max-width: 480px; width: 90%; position: relative; }
+  .modal-close { position: absolute; top: 14px; right: 18px; font-size: 22px; cursor: pointer; color: var(--gray-text); transition: color 0.2s; background: none; border: none; font-family: var(--font-display); }
   .modal-close:hover { color: var(--red); }
   .modal-title { font-family: var(--font-display); font-size: 38px; color: var(--white); margin-bottom: 8px; }
   .modal-sub { font-family: var(--font-body); font-size: 14px; color: var(--gray-text); margin-bottom: 24px; }
-  .modal-form { display: flex; flex-direction: column; gap: 12px; }
 
-  /* ─── TOAST ─── */
-  .toast {
-    position: fixed;
-    bottom: 30px; right: 30px;
-    background: var(--gray-dark);
-    border: 1px solid var(--red);
-    border-left: 4px solid var(--red);
-    border-radius: 4px;
-    padding: 14px 20px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--white);
-    z-index: 9999;
-    transform: translateX(200%);
-    transition: transform 0.3s;
-    max-width: 280px;
-  }
+  .toast { position: fixed; bottom: 30px; right: 30px; background: var(--gray-dark); border: 1px solid var(--red); border-left: 4px solid var(--red); border-radius: 4px; padding: 14px 20px; font-family: var(--font-body); font-size: 14px; color: var(--white); z-index: 9999; transform: translateX(200%); transition: transform 0.3s; max-width: 280px; }
   .toast.show { transform: translateX(0); }
   .toast-title { font-family: var(--font-heading); font-size: 13px; font-weight: 600; letter-spacing: 1px; color: var(--orange); margin-bottom: 4px; }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .flame-divider { text-align: center; font-size: 28px; padding: 10px 0; letter-spacing: 8px; color: var(--orange); background: var(--black); }
+
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   .fade-in { opacity: 0; animation: fadeInUp 0.6s forwards; }
   .fade-in-1 { animation-delay: 0.1s; }
   .fade-in-2 { animation-delay: 0.25s; }
@@ -832,49 +239,14 @@
   .fade-in-4 { animation-delay: 0.55s; }
   .fade-in-5 { animation-delay: 0.7s; }
 
-  /* ─── FLAME DIVIDER ─── */
-  .flame-divider {
-    text-align: center;
-    font-size: 28px;
-    padding: 10px 0;
-    letter-spacing: 8px;
-    color: var(--orange);
-    background: var(--black);
-  }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 1024px) {
-    section { padding: 70px 40px; }
-    .billing-grid { grid-template-columns: 1fr 1fr; }
-    .programs-grid { grid-template-columns: 1fr 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-    .hero-content { padding: 40px 24px; }
-    .hero-image-placeholder { display: none; }
-    section { padding: 60px 24px; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; }
-    .billing-grid, .programs-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    .gallery-item.wide, .gallery-item.tall { grid-column: span 1; grid-row: span 1; aspect-ratio: 1; }
-    .trainers-grid { grid-template-columns: 1fr 1fr; }
-    .hero-stats { gap: 20px; }
-    .form-row { grid-template-columns: 1fr; }
-    footer { padding: 40px 24px 20px; }
-    .footer-grid { grid-template-columns: 1fr; }
-    #free-trial { padding: 60px 24px; }
-  }
+  @media (max-width: 1024px) { section { padding: 70px 40px; } .billing-grid { grid-template-columns: 1fr 1fr; } .programs-grid { grid-template-columns: 1fr 1fr; } .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 768px) { nav { padding: 0 20px; } .nav-links { display: none; } .hamburger { display: flex; } .hero-content { padding: 40px 24px; } .hero-image-wrap { display: none; } section { padding: 60px 24px; } .about-grid, .contact-grid { grid-template-columns: 1fr; } .billing-grid, .programs-grid { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: repeat(2, 1fr); } .gallery-item.wide, .gallery-item.tall { grid-column: span 1; grid-row: span 1; aspect-ratio: 1; } .trainers-grid { grid-template-columns: 1fr 1fr; } .hero-stats { gap: 20px; } .form-row { grid-template-columns: 1fr; } footer { padding: 40px 24px 20px; } .footer-grid { grid-template-columns: 1fr; } #free-trial { padding: 60px 24px; } }
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">🔥 Hell's Gym — Open 24/7 — Call Us: +91 XXXXX XXXXX 🔥</div>
 
-<!-- NAVBAR -->
 <nav id="navbar">
   <a href="#home" class="nav-logo">
     <div class="logo-icon">HG</div>
@@ -899,19 +271,14 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#free-trial" class="btn-trial">Free Trial</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
 <section id="home">
   <div class="hero-bg"></div>
-  <div class="hero-image-placeholder">
-    <div class="placeholder-text">
-      HERO IMAGE<br>
-      <small>Replace with your gym photo</small>
-    </div>
+  <div class="hero-image-wrap">
+    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80" alt="Hell's Gym"/>
   </div>
   <div class="hero-flame"></div>
   <div class="hero-content">
@@ -921,30 +288,16 @@
       <span class="line2">YOUR</span>
       <span class="line3">FIRE</span>
     </h1>
-    <p class="hero-sub fade-in fade-in-3">
-      Hell's Gym is where ordinary ends and legends are built. Push beyond your limits — because greatness doesn't live in your comfort zone.
-    </p>
+    <p class="hero-sub fade-in fade-in-3">Hell's Gym is where ordinary ends and legends are built. Push beyond your limits — because greatness doesn't live in your comfort zone.</p>
     <div class="hero-ctas fade-in fade-in-4">
       <a href="#free-trial" class="cta-primary">Book Free Trial</a>
       <a href="#programs" class="cta-secondary">Explore Programs</a>
     </div>
     <div class="hero-stats fade-in fade-in-5">
-      <div class="stat">
-        <div class="stat-num">500+</div>
-        <div class="stat-label">Members</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">15+</div>
-        <div class="stat-label">Trainers</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">60+</div>
-        <div class="stat-label">Machines</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">Open</div>
-      </div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Members</div></div>
+      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Trainers</div></div>
+      <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Machines</div></div>
+      <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Open</div></div>
     </div>
   </div>
 </section>
@@ -957,11 +310,7 @@
     <div style="position:relative;">
       <div class="about-accent"></div>
       <div class="about-image-wrap">
-        <!-- REPLACE IMAGE: <img src="YOUR_ABOUT_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/> -->
-        <div class="img-placeholder">
-          ABOUT IMAGE<br>
-          <small>Replace with your gym interior photo</small>
-        </div>
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80" alt="Gym Interior"/>
       </div>
       <div class="about-accent-bl"></div>
     </div>
@@ -969,12 +318,8 @@
       <div class="section-label">About Hell's Gym</div>
       <div class="divider"></div>
       <h2 class="section-title">WHERE LEGENDS<br><span style="color:var(--red);">ARE BUILT</span></h2>
-      <p class="section-sub">
-        Founded with one mission — to create a space where serious athletes and beginners alike can transform themselves. Hell's Gym is not just a gym, it's a community of fire-driven individuals who refuse to settle for average.
-      </p>
-      <p style="font-family:var(--font-body);font-size:15px;color:var(--gray-text);line-height:1.8;margin-bottom:28px;">
-        With state-of-the-art equipment, expert coaches, and an atmosphere that ignites every session — we are the most intense and result-driven gym in the city. Your transformation starts here, in the heat of the grind.
-      </p>
+      <p class="section-sub">Founded with one mission — to create a space where serious athletes and beginners alike can transform themselves. Hell's Gym is not just a gym, it's a community of fire-driven individuals who refuse to settle for average.</p>
+      <p style="font-family:var(--font-body);font-size:15px;color:var(--gray-text);line-height:1.8;margin-bottom:28px;">With state-of-the-art equipment, expert coaches, and an atmosphere that ignites every session — we are the most intense and result-driven gym in the city. Your transformation starts here, in the heat of the grind.</p>
       <div class="about-features">
         <div class="about-feature">⚡ 24/7 Access</div>
         <div class="about-feature">🔥 Expert Coaches</div>
@@ -1001,106 +346,60 @@
     <button class="eq-tab" onclick="filterEq('functional',this)">Functional</button>
   </div>
   <div class="eq-grid" id="eq-grid">
-    <!-- CARDIO -->
     <div class="eq-card" data-cat="cardio" onclick="showMachineModal('Treadmill','cardio','Burns fat, improves endurance. Adjustable speed 1–20 km/h, incline 0–15°. Great for warm-up and HIIT sessions.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="TREADMILL_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        TREADMILL IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=600&q=80" alt="Treadmill"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Treadmill</div><div class="eq-card-cat">Cardio Zone</div></div>
     </div>
     <div class="eq-card" data-cat="cardio" onclick="showMachineModal('Elliptical Trainer','cardio','Low-impact full-body cardio. Targets legs, glutes, arms, and core simultaneously.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="ELLIPTICAL_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        ELLIPTICAL IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="Elliptical"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Elliptical Trainer</div><div class="eq-card-cat">Cardio Zone</div></div>
     </div>
     <div class="eq-card" data-cat="cardio" onclick="showMachineModal('Stationary Bike','cardio','Indoor cycling for endurance & fat loss. Adjustable resistance for all fitness levels.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="BIKE_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        STATIONARY BIKE IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Stationary Bike"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Stationary Bike</div><div class="eq-card-cat">Cardio Zone</div></div>
     </div>
     <div class="eq-card" data-cat="cardio" onclick="showMachineModal('Rowing Machine','cardio','Full-body, low-impact workout. Engages 86% of your muscles. Great for strength + cardio combined.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="ROWING_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        ROWING MACHINE IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1519505907962-0a6cb0167c73?w=600&q=80" alt="Rowing Machine"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Rowing Machine</div><div class="eq-card-cat">Cardio Zone</div></div>
     </div>
-    <!-- STRENGTH -->
     <div class="eq-card" data-cat="strength" onclick="showMachineModal('Leg Press Machine','strength','Targets quads, hamstrings & glutes. Adjustable weight stack, safe for beginners and advanced lifters.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="LEGPRESS_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        LEG PRESS IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1581009137042-c552e485697a?w=600&q=80" alt="Leg Press"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Leg Press Machine</div><div class="eq-card-cat">Strength</div></div>
     </div>
-    <div class="eq-card" data-cat="strength" onclick="showMachineModal('Lat Pulldown Machine','strength','Builds a wide, strong back. Targets latissimus dorsi, biceps, and rhomboids.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="LATPULLDOWN_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        LAT PULLDOWN IMAGE<br><small>Replace with photo</small>
-      </div>
+    <div class="eq-card" data-cat="strength" onclick="showMachineModal('Lat Pulldown','strength','Builds a wide, strong back. Targets latissimus dorsi, biceps, and rhomboids.')">
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1534438097545-a2c22c57f2ad?w=600&q=80" alt="Lat Pulldown"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Lat Pulldown</div><div class="eq-card-cat">Strength</div></div>
     </div>
     <div class="eq-card" data-cat="strength" onclick="showMachineModal('Chest Press Machine','strength','Isolates the chest, shoulders, and triceps. Perfect for building a powerful upper body.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="CHESTPRESS_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        CHEST PRESS IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80" alt="Chest Press"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Chest Press Machine</div><div class="eq-card-cat">Strength</div></div>
     </div>
     <div class="eq-card" data-cat="strength" onclick="showMachineModal('Cable Crossover','strength','Versatile cable machine for isolation exercises. Adjustable pulleys for chest flyes, tricep pushdowns, and more.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="CABLE_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        CABLE CROSSOVER IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80" alt="Cable Crossover"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Cable Crossover</div><div class="eq-card-cat">Strength</div></div>
     </div>
     <div class="eq-card" data-cat="strength" onclick="showMachineModal('Smith Machine','strength','Guided barbell system for squats, bench press, deadlifts. Ideal for solo training with heavy loads safely.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="SMITH_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        SMITH MACHINE IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&q=80" alt="Smith Machine"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Smith Machine</div><div class="eq-card-cat">Strength</div></div>
     </div>
-    <!-- FREE WEIGHTS -->
     <div class="eq-card" data-cat="free-weights" onclick="showMachineModal('Dumbbell Rack','free-weights','Full range 2.5 kg – 50 kg. For curls, presses, lunges and every compound movement you need.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="DUMBBELLS_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        DUMBBELL RACK IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1525543907740-aa7975b3f29d?w=600&q=80" alt="Dumbbells"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Dumbbell Rack</div><div class="eq-card-cat">Free Weights</div></div>
     </div>
     <div class="eq-card" data-cat="free-weights" onclick="showMachineModal('Barbell & Squat Rack','free-weights','Olympic barbells with full plate selection. Multiple power racks for bench press, squats, and overhead press.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="SQUAT_RACK_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        SQUAT RACK IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80" alt="Squat Rack"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Barbell & Squat Rack</div><div class="eq-card-cat">Free Weights</div></div>
     </div>
-    <!-- FUNCTIONAL -->
     <div class="eq-card" data-cat="functional" onclick="showMachineModal('Battle Ropes','functional','Build explosive power, endurance, and grip strength. Perfect for HIIT finishers.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="BATTLE_ROPES_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        BATTLE ROPES IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=600&q=80" alt="Battle Ropes"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Battle Ropes</div><div class="eq-card-cat">Functional</div></div>
     </div>
     <div class="eq-card" data-cat="functional" onclick="showMachineModal('Kettlebells','functional','Full range of weights for swings, Turkish get-ups, and metabolic conditioning circuits.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="KETTLEBELL_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        KETTLEBELL IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=600&q=80" alt="Kettlebells"/></div>
       <div class="eq-card-info"><div class="eq-card-name">Kettlebells</div><div class="eq-card-cat">Functional</div></div>
     </div>
     <div class="eq-card" data-cat="functional" onclick="showMachineModal('TRX Suspension Trainer','functional','Bodyweight training system. Build core strength, balance, and functional movement patterns.')">
-      <div class="eq-card-image">
-        <!-- REPLACE: <img src="TRX_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.8;"/> -->
-        TRX IMAGE<br><small>Replace with photo</small>
-      </div>
+      <div class="eq-card-image"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="TRX"/></div>
       <div class="eq-card-info"><div class="eq-card-name">TRX Suspension Trainer</div><div class="eq-card-cat">Functional</div></div>
     </div>
   </div>
@@ -1113,109 +412,72 @@
   <h2 class="section-title">YOUR TRAINER<span style="color:var(--red);">S</span></h2>
   <p class="section-sub">World-class coaches across every discipline. They don't just train you — they transform you.</p>
   <div class="trainers-grid">
-
     <div class="trainer-card">
       <div class="trainer-image">
-        <!-- REPLACE: <img src="TRAINER1_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/> -->
-        TRAINER PHOTO<br><small>Replace with trainer photo</small>
+        <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=600&q=80" alt="Vikram Singh"/>
         <div class="trainer-overlay"></div>
       </div>
       <div class="trainer-info">
         <div class="trainer-name">Vikram Singh</div>
         <div class="trainer-type">💪 Strength & Powerlifting Coach</div>
-        <div class="trainer-tags">
-          <span class="trainer-tag">Powerlifting</span>
-          <span class="trainer-tag">Bodybuilding</span>
-          <span class="trainer-tag">Nutrition</span>
-        </div>
+        <div class="trainer-tags"><span class="trainer-tag">Powerlifting</span><span class="trainer-tag">Bodybuilding</span><span class="trainer-tag">Nutrition</span></div>
       </div>
     </div>
-
     <div class="trainer-card">
       <div class="trainer-image">
-        <!-- REPLACE: <img src="TRAINER2_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/> -->
-        TRAINER PHOTO<br><small>Replace with trainer photo</small>
+        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80" alt="Priya Nair"/>
         <div class="trainer-overlay"></div>
       </div>
       <div class="trainer-info">
         <div class="trainer-name">Priya Nair</div>
         <div class="trainer-type">🔥 HIIT & Functional Fitness</div>
-        <div class="trainer-tags">
-          <span class="trainer-tag">HIIT</span>
-          <span class="trainer-tag">Weight Loss</span>
-          <span class="trainer-tag">CrossFit</span>
-        </div>
+        <div class="trainer-tags"><span class="trainer-tag">HIIT</span><span class="trainer-tag">Weight Loss</span><span class="trainer-tag">CrossFit</span></div>
       </div>
     </div>
-
     <div class="trainer-card">
       <div class="trainer-image">
-        <!-- REPLACE: <img src="TRAINER3_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/> -->
-        TRAINER PHOTO<br><small>Replace with trainer photo</small>
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="Rahul Menon"/>
         <div class="trainer-overlay"></div>
       </div>
       <div class="trainer-info">
         <div class="trainer-name">Rahul Menon</div>
         <div class="trainer-type">⚡ Athletic Performance Coach</div>
-        <div class="trainer-tags">
-          <span class="trainer-tag">Athletics</span>
-          <span class="trainer-tag">Plyometrics</span>
-          <span class="trainer-tag">Conditioning</span>
-        </div>
+        <div class="trainer-tags"><span class="trainer-tag">Athletics</span><span class="trainer-tag">Plyometrics</span><span class="trainer-tag">Conditioning</span></div>
       </div>
     </div>
-
     <div class="trainer-card">
       <div class="trainer-image">
-        <!-- REPLACE: <img src="TRAINER4_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/> -->
-        TRAINER PHOTO<br><small>Replace with trainer photo</small>
+        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="Ananya Sharma"/>
         <div class="trainer-overlay"></div>
       </div>
       <div class="trainer-info">
         <div class="trainer-name">Ananya Sharma</div>
         <div class="trainer-type">🧘 Yoga & Mobility Specialist</div>
-        <div class="trainer-tags">
-          <span class="trainer-tag">Yoga</span>
-          <span class="trainer-tag">Flexibility</span>
-          <span class="trainer-tag">Recovery</span>
-        </div>
+        <div class="trainer-tags"><span class="trainer-tag">Yoga</span><span class="trainer-tag">Flexibility</span><span class="trainer-tag">Recovery</span></div>
       </div>
     </div>
-
     <div class="trainer-card">
       <div class="trainer-image">
-        <!-- REPLACE: <img src="TRAINER5_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/> -->
-        TRAINER PHOTO<br><small>Replace with trainer photo</small>
+        <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=600&q=80" alt="Arjun Kapoor"/>
         <div class="trainer-overlay"></div>
       </div>
       <div class="trainer-info">
         <div class="trainer-name">Arjun Kapoor</div>
         <div class="trainer-type">🥊 Boxing & Combat Fitness</div>
-        <div class="trainer-tags">
-          <span class="trainer-tag">Boxing</span>
-          <span class="trainer-tag">MMA Fitness</span>
-          <span class="trainer-tag">Stamina</span>
-        </div>
+        <div class="trainer-tags"><span class="trainer-tag">Boxing</span><span class="trainer-tag">MMA Fitness</span><span class="trainer-tag">Stamina</span></div>
       </div>
     </div>
-
     <div class="trainer-card">
       <div class="trainer-image">
-        <!-- REPLACE: <img src="TRAINER6_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/> -->
-        TRAINER PHOTO<br><small>Replace with trainer photo</small>
+        <img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?w=600&q=80" alt="Deepika Rao"/>
         <div class="trainer-overlay"></div>
       </div>
       <div class="trainer-info">
         <div class="trainer-name">Deepika Rao</div>
         <div class="trainer-type">🍎 Sports Nutritionist & Trainer</div>
-        <div class="trainer-tags">
-          <span class="trainer-tag">Nutrition</span>
-          <span class="trainer-tag">Women's Fitness</span>
-          <span class="trainer-tag">Toning</span>
-        </div>
+        <div class="trainer-tags"><span class="trainer-tag">Nutrition</span><span class="trainer-tag">Women's Fitness</span><span class="trainer-tag">Toning</span></div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1226,40 +488,16 @@
   <h2 class="section-title">OUR <span style="color:var(--red);">PROGRAMS</span></h2>
   <p class="section-sub">From beginner to elite — a program designed for every level of fire.</p>
   <div class="programs-grid">
-    <div class="program-card">
-      <div class="program-icon">🏋️</div>
-      <div class="program-name">Muscle Building</div>
-      <p class="program-desc">Structured hypertrophy programs designed to add lean muscle mass. Periodized training with progressive overload principles.</p>
-    </div>
-    <div class="program-card">
-      <div class="program-icon">🔥</div>
-      <div class="program-name">Fat Burn & HIIT</div>
-      <p class="program-desc">High-intensity interval training that torches fat and boosts metabolism. Short, brutal, effective sessions.</p>
-    </div>
-    <div class="program-card">
-      <div class="program-icon">💪</div>
-      <div class="program-name">Strength Training</div>
-      <p class="program-desc">Powerlifting-inspired strength programs focused on squat, bench, and deadlift. Build real, raw power.</p>
-    </div>
-    <div class="program-card">
-      <div class="program-icon">⚡</div>
-      <div class="program-name">Athletic Conditioning</div>
-      <p class="program-desc">Sports-specific conditioning to enhance speed, agility, power, and endurance. Train like a pro athlete.</p>
-    </div>
-    <div class="program-card">
-      <div class="program-icon">🧘</div>
-      <div class="program-name">Yoga & Mobility</div>
-      <p class="program-desc">Improve flexibility, prevent injuries, and enhance recovery with structured yoga and mobility work.</p>
-    </div>
-    <div class="program-card">
-      <div class="program-icon">🥊</div>
-      <div class="program-name">Combat Fitness</div>
-      <p class="program-desc">Boxing, kickboxing, and MMA-inspired workouts for coordination, explosiveness, and full-body conditioning.</p>
-    </div>
+    <div class="program-card"><div class="program-icon">🏋️</div><div class="program-name">Muscle Building</div><p class="program-desc">Structured hypertrophy programs designed to add lean muscle mass. Periodized training with progressive overload principles.</p></div>
+    <div class="program-card"><div class="program-icon">🔥</div><div class="program-name">Fat Burn & HIIT</div><p class="program-desc">High-intensity interval training that torches fat and boosts metabolism. Short, brutal, effective sessions.</p></div>
+    <div class="program-card"><div class="program-icon">💪</div><div class="program-name">Strength Training</div><p class="program-desc">Powerlifting-inspired strength programs focused on squat, bench, and deadlift. Build real, raw power.</p></div>
+    <div class="program-card"><div class="program-icon">⚡</div><div class="program-name">Athletic Conditioning</div><p class="program-desc">Sports-specific conditioning to enhance speed, agility, power, and endurance. Train like a pro athlete.</p></div>
+    <div class="program-card"><div class="program-icon">🧘</div><div class="program-name">Yoga & Mobility</div><p class="program-desc">Improve flexibility, prevent injuries, and enhance recovery with structured yoga and mobility work.</p></div>
+    <div class="program-card"><div class="program-icon">🥊</div><div class="program-name">Combat Fitness</div><p class="program-desc">Boxing, kickboxing, and MMA-inspired workouts for coordination, explosiveness, and full-body conditioning.</p></div>
   </div>
 </section>
 
-<!-- BILLING -->
+<!-- BILLING — each button calls enquirePlan() with plan details -->
 <section id="billing">
   <div class="section-label">Membership Plans</div>
   <div class="divider"></div>
@@ -1279,7 +517,8 @@
         <li>No Diet Plan</li>
         <li>No Group Classes</li>
       </ul>
-      <a href="#free-trial" class="billing-btn">Get Started</a>
+      <!-- Scrolls to contact form and pre-fills the Starter plan -->
+      <button class="billing-btn" onclick="enquirePlan('Starter Plan — ₹799/mo', 'I am interested in the Starter Plan (₹799/mo). Please share more details about gym access timings, cardio equipment, and how to get started.')">Get Started</button>
     </div>
 
     <div class="billing-card featured">
@@ -1295,7 +534,8 @@
         <li class="included">Basic Diet Plan</li>
         <li>No Premium Coaching</li>
       </ul>
-      <a href="#free-trial" class="billing-btn">Join Now</a>
+      <!-- Scrolls to contact form and pre-fills the Inferno plan -->
+      <button class="billing-btn" onclick="enquirePlan('Inferno Plan — ₹1,499/mo', 'I am interested in the Inferno Plan (₹1,499/mo). Please share more details about the 24/7 access, personal training sessions, group classes, and diet plan included.')">Join Now</button>
     </div>
 
     <div class="billing-card">
@@ -1310,7 +550,8 @@
         <li class="included">Body Composition Analysis</li>
         <li class="included">Supplement Guidance</li>
       </ul>
-      <a href="#free-trial" class="billing-btn">Go Elite</a>
+      <!-- Scrolls to contact form and pre-fills the Hellfire Elite plan -->
+      <button class="billing-btn" onclick="enquirePlan('Hellfire Elite Plan — ₹2,999/mo', 'I am interested in the Hellfire Elite Plan (₹2,999/mo). Please share more details about unlimited PT sessions, the custom diet & meal plan, body composition analysis, and supplement guidance.')">Go Elite</button>
     </div>
 
   </div>
@@ -1323,41 +564,40 @@
   <h2 class="section-title">THE <span style="color:var(--red);">GALLERY</span></h2>
   <p class="section-sub">A look inside the inferno. Every corner built for performance.</p>
   <div class="gallery-grid">
-    <!-- REPLACE EACH: Add <img src="YOUR_IMAGE.jpg" style="width:100%;height:100%;object-fit:cover;"/> inside each .gallery-item -->
     <div class="gallery-item wide">
-      GALLERY PHOTO 1 (Wide)<br><small>Replace with gym photo</small>
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="Gym Floor"/>
       <div class="gallery-overlay"><div class="gallery-overlay-icon">+</div></div>
     </div>
     <div class="gallery-item">
-      GALLERY PHOTO 2<br><small>Replace with gym photo</small>
+      <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80" alt="Equipment"/>
       <div class="gallery-overlay"><div class="gallery-overlay-icon">+</div></div>
     </div>
     <div class="gallery-item">
-      GALLERY PHOTO 3<br><small>Replace with gym photo</small>
+      <img src="https://images.unsplash.com/photo-1581009137042-c552e485697a?w=600&q=80" alt="Weights Area"/>
       <div class="gallery-overlay"><div class="gallery-overlay-icon">+</div></div>
     </div>
     <div class="gallery-item tall">
-      GALLERY PHOTO 4 (Tall)<br><small>Replace with gym photo</small>
+      <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80" alt="Training"/>
       <div class="gallery-overlay"><div class="gallery-overlay-icon">+</div></div>
     </div>
     <div class="gallery-item">
-      GALLERY PHOTO 5<br><small>Replace with gym photo</small>
+      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80" alt="Machines"/>
       <div class="gallery-overlay"><div class="gallery-overlay-icon">+</div></div>
     </div>
     <div class="gallery-item">
-      GALLERY PHOTO 6<br><small>Replace with gym photo</small>
+      <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=600&q=80" alt="Kettlebells"/>
       <div class="gallery-overlay"><div class="gallery-overlay-icon">+</div></div>
     </div>
     <div class="gallery-item">
-      GALLERY PHOTO 7<br><small>Replace with gym photo</small>
+      <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&q=80" alt="Strength Area"/>
       <div class="gallery-overlay"><div class="gallery-overlay-icon">+</div></div>
     </div>
     <div class="gallery-item wide">
-      GALLERY PHOTO 8 (Wide)<br><small>Replace with gym photo</small>
+      <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=1200&q=80" alt="Full Gym"/>
       <div class="gallery-overlay"><div class="gallery-overlay-icon">+</div></div>
     </div>
     <div class="gallery-item">
-      GALLERY PHOTO 9<br><small>Replace with gym photo</small>
+      <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80" alt="Squat Rack"/>
       <div class="gallery-overlay"><div class="gallery-overlay-icon">+</div></div>
     </div>
   </div>
@@ -1370,14 +610,14 @@
   <h2 class="section-title" style="text-align:center;">BOOK YOUR<br><span style="color:var(--red);">FREE TRIAL</span></h2>
   <p class="section-sub">Walk in, feel the heat, and decide for yourself. No commitment. No strings.</p>
   <div class="trial-form">
-    <input type="text" id="trial-name" placeholder="Your Name" />
-    <input type="tel" id="trial-phone" placeholder="Phone Number" />
-    <input type="email" id="trial-email" placeholder="Email Address" />
+    <input type="text" id="trial-name" placeholder="Your Name"/>
+    <input type="tel" id="trial-phone" placeholder="Phone Number"/>
+    <input type="email" id="trial-email" placeholder="Email Address"/>
     <button id="trial-btn" onclick="submitTrial()">🔥 Book Now</button>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT — subject field gets pre-filled when a plan button is clicked -->
 <section id="contact">
   <div class="section-label">Get In Touch</div>
   <div class="divider"></div>
@@ -1386,39 +626,30 @@
     <div>
       <div class="contact-info-item">
         <div class="contact-icon">📍</div>
-        <div>
-          <div class="contact-info-label">Location</div>
-          <div class="contact-info-value">Your Gym Address Here<br>City, State, PIN Code</div>
-        </div>
+        <div><div class="contact-info-label">Location</div><div class="contact-info-value">Your Gym Address Here<br>City, State, PIN Code</div></div>
       </div>
       <div class="contact-info-item">
         <div class="contact-icon">📞</div>
-        <div>
-          <div class="contact-info-label">Phone</div>
-          <div class="contact-info-value">+91 XXXXX XXXXX</div>
-        </div>
+        <div><div class="contact-info-label">Phone</div><div class="contact-info-value">+91 XXXXX XXXXX</div></div>
       </div>
       <div class="contact-info-item">
         <div class="contact-icon">✉️</div>
-        <div>
-          <div class="contact-info-label">Email</div>
-          <div class="contact-info-value">hello@hellsgym.in</div>
-        </div>
+        <div><div class="contact-info-label">Email</div><div class="contact-info-value">hello@hellsgym.in</div></div>
       </div>
       <div class="contact-info-item">
         <div class="contact-icon">⏰</div>
-        <div>
-          <div class="contact-info-label">Hours</div>
-          <div class="contact-info-value">Open 24/7 — All Days Including Holidays</div>
-        </div>
+        <div><div class="contact-info-label">Hours</div><div class="contact-info-value">Open 24/7 — All Days Including Holidays</div></div>
       </div>
     </div>
     <div>
       <div class="contact-form">
+        <!-- Plan notice banner — appears when coming from a billing plan button -->
+        <div class="plan-notice" id="plan-notice">📋 Enquiry pre-filled for: <strong id="plan-notice-text"></strong></div>
         <div class="form-row">
           <input class="form-input" type="text" placeholder="Your Name" id="c-name"/>
           <input class="form-input" type="email" placeholder="Email Address" id="c-email"/>
         </div>
+        <!-- Subject is pre-filled with the selected plan name -->
         <input class="form-input" type="text" placeholder="Subject" id="c-subject"/>
         <textarea class="form-textarea" id="c-message" placeholder="Your message..."></textarea>
         <button class="form-btn" id="contact-btn" onclick="submitContact()">Send Message 🔥</button>
@@ -1440,36 +671,9 @@
         <a href="#" class="social-btn">🐦</a>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#equipment">Equipment</a></li>
-        <li><a href="#trainers">Trainers</a></li>
-        <li><a href="#programs">Programs</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Membership</h4>
-      <ul>
-        <li><a href="#billing">Starter Plan</a></li>
-        <li><a href="#billing">Inferno Plan</a></li>
-        <li><a href="#billing">Elite Plan</a></li>
-        <li><a href="#free-trial">Free Trial</a></li>
-        <li><a href="#contact">Corporate</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Programs</h4>
-      <ul>
-        <li><a href="#programs">Muscle Building</a></li>
-        <li><a href="#programs">HIIT & Fat Burn</a></li>
-        <li><a href="#programs">Strength Training</a></li>
-        <li><a href="#programs">Yoga & Mobility</a></li>
-        <li><a href="#programs">Combat Fitness</a></li>
-      </ul>
-    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#about">About Us</a></li><li><a href="#equipment">Equipment</a></li><li><a href="#trainers">Trainers</a></li><li><a href="#programs">Programs</a></li><li><a href="#gallery">Gallery</a></li></ul></div>
+    <div class="footer-col"><h4>Membership</h4><ul><li><a href="#billing">Starter Plan</a></li><li><a href="#billing">Inferno Plan</a></li><li><a href="#billing">Elite Plan</a></li><li><a href="#free-trial">Free Trial</a></li><li><a href="#contact">Corporate</a></li></ul></div>
+    <div class="footer-col"><h4>Programs</h4><ul><li><a href="#programs">Muscle Building</a></li><li><a href="#programs">HIIT & Fat Burn</a></li><li><a href="#programs">Strength Training</a></li><li><a href="#programs">Yoga & Mobility</a></li><li><a href="#programs">Combat Fitness</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 <span>Hell's Gym</span>. All rights reserved. Forged in fire.</div>
@@ -1495,10 +699,6 @@
 </div>
 
 <script>
-  // ══════════════════════════════════════════
-  // FORMSPREE ENDPOINTS — Replace with your own
-  // Get these from formspree.io after creating your forms
-  // ══════════════════════════════════════════
   const TRIAL_ENDPOINT   = 'https://formspree.io/f/mkoezddg';
   const CONTACT_ENDPOINT = 'https://formspree.io/f/mwvzqggl';
 
@@ -1508,16 +708,12 @@
     const isOpen = links.style.display === 'flex';
     links.style.display = isOpen ? 'none' : 'flex';
     if (!isOpen) {
-      links.style.flexDirection = 'column';
-      links.style.position = 'absolute';
-      links.style.top = '70px';
-      links.style.left = '0';
-      links.style.right = '0';
-      links.style.background = '#0A0A0A';
-      links.style.padding = '20px';
-      links.style.borderBottom = '2px solid #C0152A';
-      links.style.gap = '4px';
-      links.style.zIndex = '999';
+      Object.assign(links.style, {
+        flexDirection: 'column', position: 'absolute',
+        top: '70px', left: '0', right: '0',
+        background: '#0A0A0A', padding: '20px',
+        borderBottom: '2px solid #C0152A', gap: '4px', zIndex: '999'
+      });
     }
   }
 
@@ -1531,19 +727,35 @@
     if (cat !== 'all') document.getElementById('equipment').scrollIntoView({ behavior: 'smooth' });
   }
 
-  // ── MODALS ──
+  // ── MACHINE MODAL ──
   function showMachineModal(name, cat, desc) {
     document.getElementById('modal-name').textContent = name;
     document.getElementById('modal-cat').textContent  = cat.replace('-', ' ').toUpperCase();
     document.getElementById('modal-desc').textContent = desc;
     document.getElementById('machine-modal').classList.add('open');
   }
-  function closeModal(id) {
-    document.getElementById(id).classList.remove('open');
-  }
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
   document.getElementById('machine-modal').addEventListener('click', function(e) {
     if (e.target === this) closeModal('machine-modal');
   });
+
+  // ── PLAN ENQUIRY — pre-fills the contact form with the selected plan ──
+  function enquirePlan(planName, planMessage) {
+    // Fill in subject and message
+    document.getElementById('c-subject').value = planName;
+    document.getElementById('c-message').value = planMessage;
+
+    // Show the plan notice banner
+    const notice = document.getElementById('plan-notice');
+    document.getElementById('plan-notice-text').textContent = planName;
+    notice.classList.add('visible');
+
+    // Scroll smoothly to the contact form
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+
+    // Focus the name field so the user can start typing
+    setTimeout(() => document.getElementById('c-name').focus(), 600);
+  }
 
   // ── TOAST ──
   function showToast(title, msg, isError) {
@@ -1564,33 +776,19 @@
     btn.style.opacity = loading ? '0.7' : '1';
   }
 
-  // ── FREE TRIAL FORM → Formspree ──
+  // ── FREE TRIAL FORM ──
   async function submitTrial() {
     const name  = document.getElementById('trial-name').value.trim();
     const phone = document.getElementById('trial-phone').value.trim();
     const email = document.getElementById('trial-email').value.trim();
-
-    if (!name || !phone) {
-      showToast('⚠️ Hold on!', 'Please fill in your name and phone number.', true);
-      return;
-    }
-
+    if (!name || !phone) { showToast('⚠️ Hold on!', 'Please fill in your name and phone number.', true); return; }
     setLoading('trial-btn', true, '🔥 Book Now');
     try {
       const res = await fetch(TRIAL_ENDPOINT, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name:  name,
-          phone: phone,
-          email: email || 'Not provided',
-          _subject: '🔥 New Free Trial Booking — ' + name
-        })
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, phone, email: email || 'Not provided', _subject: '🔥 New Free Trial Booking — ' + name })
       });
-
       const data = await res.json();
       if (res.ok) {
         showToast("🔥 You're In!", "Trial booked for " + name + "! We'll call you shortly.");
@@ -1607,43 +805,28 @@
     }
   }
 
-  // ── CONTACT FORM → Formspree ──
+  // ── CONTACT FORM ──
   async function submitContact() {
     const name    = document.getElementById('c-name').value.trim();
     const email   = document.getElementById('c-email').value.trim();
-    const subject = document.getElementById('c-subject') ? document.getElementById('c-subject').value.trim() : '';
-    const message = document.getElementById('c-message') ? document.getElementById('c-message').value.trim() : '';
-
-    if (!name || !email) {
-      showToast('⚠️ Hold on!', 'Please fill in your name and email.', true);
-      return;
-    }
-
+    const subject = document.getElementById('c-subject').value.trim();
+    const message = document.getElementById('c-message').value.trim();
+    if (!name || !email) { showToast('⚠️ Hold on!', 'Please fill in your name and email.', true); return; }
     setLoading('contact-btn', true, 'Send Message 🔥');
     try {
       const res = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name:     name,
-          email:    email,
-          subject:  subject || 'General Enquiry',
-          message:  message || 'No message provided',
-          _subject: '📩 New Contact Message from ' + name,
-          _replyto: email
-        })
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, subject: subject || 'General Enquiry', message: message || 'No message provided', _subject: '📩 New Message from ' + name + (subject ? ' — ' + subject : ''), _replyto: email })
       });
-
       const data = await res.json();
       if (res.ok) {
         showToast('✅ Message Sent!', "We'll get back to you within 24 hours. Stay fired up!");
-        document.getElementById('c-name').value = '';
-        document.getElementById('c-email').value = '';
-        if (document.getElementById('c-subject'))  document.getElementById('c-subject').value  = '';
-        if (document.getElementById('c-message'))  document.getElementById('c-message').value  = '';
+        document.getElementById('c-name').value    = '';
+        document.getElementById('c-email').value   = '';
+        document.getElementById('c-subject').value = '';
+        document.getElementById('c-message').value = '';
+        document.getElementById('plan-notice').classList.remove('visible');
       } else {
         showToast('⚠️ Error', data.error || 'Something went wrong. Please try again.', true);
       }
