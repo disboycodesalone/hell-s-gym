@@ -55,3 +55,8 @@ app.post('/contact', async (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, () => console.log("Hell's Gym server running"));
+// Keep alive — pings itself every 14 minutes
+const https = require('https');
+setInterval(() => {
+  https.get('https://hellsgym-backend.onrender.com');
+}, 14 * 60 * 1000);
