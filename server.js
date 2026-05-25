@@ -44,7 +44,7 @@ app.post('/contact', async (req, res) => {
 
   try {
     await sendMail(
-      'New Website Enquiry',
+      'New Gym Membership Enquiry',
       `<h2 style="color:#C0152A;">New Enquiry</h2>
        <p><b>Name:</b> ${name}</p>
        <p><b>Email:</b> ${email}</p>
