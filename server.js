@@ -13,9 +13,9 @@ async function sendMail(subject, html) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      from: 'Hell\'s Gym <onboarding@resend.dev>',
-      to:   [process.env.TO_EMAIL],
-      subject,
+  from: "Website Contact <onboarding@resend.dev>",
+  to: [process.env.TO_EMAIL],
+  subject,
       html
     })
   });
@@ -41,16 +41,19 @@ app.post('/trial', async (req, res) => {
 
 app.post('/contact', async (req, res) => {
   const { name, email, subject, message } = req.body;
+
   try {
     await sendMail(
-      `📩 ${subject || 'General Enquiry'} — ${name}`,
+      'New Website Enquiry',
       `<h2 style="color:#C0152A;">New Enquiry</h2>
        <p><b>Name:</b> ${name}</p>
        <p><b>Email:</b> ${email}</p>
        <p><b>Subject:</b> ${subject || 'General Enquiry'}</p>
        <p><b>Message:</b><br>${message || 'No message'}</p>`
     );
+
     res.json({ ok: true });
+
   } catch (e) {
     console.error(e);
     res.status(500).json({ error: 'Mail failed' });
