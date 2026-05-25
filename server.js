@@ -13,7 +13,7 @@ async function sendMail(subject, html) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-  from: "Website Contact <onboarding@resend.dev>",
+  from: "Hell's Gym <onboarding@resend.dev>",
   to: [process.env.TO_EMAIL],
   subject,
       html
